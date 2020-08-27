@@ -1,0 +1,5 @@
+<p>bonjour {{ user.getUsername }} !</p>
+
+<p>Cliquez sur le lien ci-dessous pour réinitialiser votre mot de passe</p>
+
+<a href="{{ absolute_url(path('modifMdp',{'id' : user.userId, 'token' : user.token}))}}">cliquer ici</a>

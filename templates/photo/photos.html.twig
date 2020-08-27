@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    {% for photo in photos %}
+        <div>
+            {% if photo.photoId==1 %}
+                <h3>Logo de l'application</h3>
+            {% elseif (photo.photoId==2)%}
+                <h3>Photo par défault des utilisateurs</h3>
+            {% endif %}
+
+            <div>
+                <img src="{{ asset('photos/Local/') ~photo.codePhoto }} " width="150" alt="">
+            </div>
+
+            <div id="actionsProfils">
+                <button class="btnAdministrateur"><a href="{{ path('photo_modifier', {'id':photo.photoId}) }}">Modifier</a></button>
+            </div>
+                {#    {% if utilisateur.actif==1 %}
+                       <button><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Bloquer</a></button>
+                   {% else %}
+                       <button><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Débloquer</a></button>
+                   {% endif %}
+                   <button><a href="{{ path('profil_supprimer', {'id':utilisateur.userId}) }}">Supprimer</a></button>
+               </div>
+               #}
+        </div><br>
+    {% endfor %}
+{% endblock %}

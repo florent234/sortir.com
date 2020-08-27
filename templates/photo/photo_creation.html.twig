@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<h1>Ajouter une photo</h1>
+
+<div>
+    {{ form_start(formPhoto) }}
+    {{ form_widget(formPhoto) }}
+    <button class="btnAdministrateur" type="submit" name="submit" id="submit">Enregistrer</button>
+    {{ form_end(formPhoto) }}
+</div>
+
+{% endblock %}

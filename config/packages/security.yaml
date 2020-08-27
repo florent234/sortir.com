@@ -1,0 +1,57 @@
+security:
+
+    providers:
+        our_db_provider:
+            entity:
+                class: App\Entity\Utilisateur
+                property: username
+
+    firewalls:
+        main:
+            pattern: ^/
+            provider: our_db_provider
+            anonymous: ~
+            form_login:
+                login_path: connection
+                check_path: connection
+            logout:
+                path: logout
+                target: connection
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                domain: ~
+
+
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
+
+    access_control:
+        - { path: ^/connection, roles: ~ }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/campus, roles: ROLE_ADMIN }
+        - { path: ^/villes, roles: ROLE_ADMIN }
+        - { path: ^/administrateur, roles: ROLE_ADMIN }
+        - { path: ^/CSV, roles: ROLE_ADMIN }
+        - { path: ^/photo, roles: ROLE_ADMIN }
+        - { path: ^/inscription, roles: ROLE_ADMIN }
+        - { path: ^/profil_modifier, roles: ROLE_ADMIN }
+        - { path: ^/profils, roles: ROLE_ADMIN }
+        - { path: ^/supprimer, roles: ROLE_ADMIN }
+        - { path: ^/bloquer, roles: ROLE_ADMIN }
+        - { path: ^/creation_sortie, roles: ROLE_ADMIN }
+        - { path: ^/sortie_modifier, roles: ROLE_ADMIN }
+        - { path: ^/sortie_publier, roles: ROLE_ADMIN }
+        - { path: ^/sortie_annuler, roles: ROLE_ADMIN }
+
+
+
+
+
+
+
+
+

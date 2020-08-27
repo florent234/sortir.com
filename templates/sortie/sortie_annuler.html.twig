@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<h1>Annuler une sortie</h1>
+
+<div>
+    <div>
+        <label>Nom de la sortie :</label>{{ sortie.nomSortie }} <br>
+        <label>Date et heure de la sortie :</label>{{ sortie.dateHeure|date("m/d/Y") }} <br>
+        <label>Campus :</label>{{ sortie.campus.nomCampus }} <br>
+        <label>Lieu :</label> {{ sortie.rue }} {{ sortie.ville.nomVilles }} {{ sortie.codePostal }}<br>
+        <form method="post">
+            <label for="commentaire">Motif :</label><textarea name="commentaire" id="commentaire" rows="5" cols="40"></textarea><br>
+            <input type="submit" name="submit" id="submit" value="Enregister">
+            <input type="reset" name="reset" id="reset" value="Annuler">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

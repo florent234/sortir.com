@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<h1>Ajouter un fichier</h1>
+
+<div>
+    {{ form_start(formCSV) }}
+    {{ form_widget(formCSV) }}
+    <button type="submit" name="submit" id="submit">Enregistrer</button>
+    {{ form_end(formCSV) }}
+</div>
+
+{% endblock %}

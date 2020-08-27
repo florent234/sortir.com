@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Villes</th>
+            <th>Code Postal</th>
+            <th>Actions</th>
+        </tr>
+        {% for ville in villes %}
+            <tr>
+             {% if(ville.VillesId!=id) %}
+                <td>{{ ville.nomVilles }}</td>
+                 <td>{{ ville.codePostal }}</td>
+                <td>Modifier Supprimer</td>
+             {% elseif(ville.VillesId==id) %}
+                 {{ form_start(formVilles) }}
+                 <td>{{ form_widget(formVilles.nomVilles) }}</td>
+                 <td>{{ form_widget(formVilles.codePostal) }}</td>
+                 <td><button type="submit" name="submit" id="submit">Modifier</button></td>
+                 {{ form_end(formVilles) }}
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block title %}Campus{% endblock %}

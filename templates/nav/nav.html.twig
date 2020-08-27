@@ -1,0 +1,17 @@
+
+<div id="nav">
+
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a class="aMenu" href="{{ path('accueil') }}">Accueil</a>
+        <a class="aMenu" href="{{ path('profil_modifier', {'id':app.user.UserId})}}">Mon Profil</a>
+        <a class="aMenu" href="{{ path('logout') }}">Se Déconnecter</a><br>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="aMenu" href="{{ path('administrateur') }}">Administrateur</a>
+            {% endif %}
+    {% else %}
+            <a class="aMenu" href="{{ path('connection') }}">Se connecter</a>
+    {% endif %}
+</div>
+

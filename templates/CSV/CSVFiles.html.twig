@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <label>Importer un fichier CSV: </label><button><a href="{{ path('CSV_creation') }}">CSV création</a></button>
+    <h3>Fichiers CSV déja importés :</h3>
+    {% for csvfile in csv %}
+        <div>
+                <label>ID du CSV : </label>{{ csvfile.Id }} <br>
+                <label>Nom du CSV : </label>{{ csvfile.nom }}<br>
+            <button><a href="{{ path('CSV_importation', {'id': csvfile.Id }) }}">Importer</a></button><br>
+
+            {#
+            <div id="actionsProfils">
+                <button><a href="{{ path('profil_afficher', {'id':utilisateur.userId}) }}">Modifier</a></button>
+                {% if utilisateur.actif==1 %}
+                    <button><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Bloquer</a></button>
+                {% else %}
+                    <button><a href="{{ path('profil_bloquer', {'id':utilisateur.userId}) }}">Débloquer</a></button>
+                {% endif %}
+                <button><a href="{{ path('profil_supprimer', {'id':utilisateur.userId}) }}">Supprimer</a></button>
+            </div>
+            #}
+        </div><br>
+    {% endfor %}
+{% endblock %}
